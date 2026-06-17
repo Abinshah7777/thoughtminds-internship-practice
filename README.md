@@ -1,4 +1,4 @@
-# Abinshah P.M
+# Abinshah PM
 
 ## Degree / Department
 
@@ -6,7 +6,7 @@ B.Tech in Computer Science and Engineering (Artificial Intelligence & Data Scien
 
 ## College
 
-Mentor Academy (Add your affiliated university/college name if required)
+Mentor Academy
 
 ## Skills
 
