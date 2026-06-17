@@ -12,7 +12,7 @@ B.Tech in Computer Science and Engineering (Artificial Intelligence & Data Scien
 
 ## College
 
-Mentor Academy
+Mentor College of Engineering, Muvattupuzha
 
 ## Skills
 
