@@ -1,0 +1,1 @@
+# thoughtminds-internship-practice
