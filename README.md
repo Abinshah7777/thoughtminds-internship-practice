@@ -1,5 +1,11 @@
 # Abinshah PM
 
+
+## Introduction
+
+Hello! I'm Abinshah, a second-year B.Tech student in Computer Science and Engineering (AI & DS). I enjoy learning new technologies and building projects using Python, JavaScript, and web development tools.
+
+
 ## Degree / Department
 
 B.Tech in Computer Science and Engineering (Artificial Intelligence & Data Science)
