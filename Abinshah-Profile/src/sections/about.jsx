@@ -1,64 +1,66 @@
 import React from 'react';
-import { Code, Zap, Users, Lightbulb } from 'lucide-react';
+import { Code2, Gauge, Users2, Lightbulb } from 'lucide-react';
+import SectionTag from '@/components/SectionTag';
+import useReveal from '@/hooks/useReveal';
+
+const highlights = [
+  { icon: Code2, title: 'Clean code', desc: 'Predictable, self-documenting structures that the next engineer can pick up without a walkthrough.' },
+  { icon: Gauge, title: 'Performance', desc: 'Optimizing queries, algorithms, and the overhead micro-frameworks tend to hide.' },
+  { icon: Users2, title: 'Collaboration', desc: 'Comfortable in cross-functional teams, working off Git workflows and shared standards.' },
+  { icon: Lightbulb, title: 'Curiosity', desc: 'Extending tutorials and assignments into independently-built, production-shaped projects.' },
+];
 
 export default function About() {
-  const highlights = [
-    { icon: Code, title: 'Clean Code', desc: 'Writing predictable, maintainable, and self-documenting code structures.' },
-    { icon: Zap, title: 'Performance', desc: 'Optimizing execution queries, algorithms, and micro-framework overhead.' },
-    { icon: Users, title: 'Collaboration', desc: 'Working across cross-functional engineering teams with modern Git versioning.' },
-    { icon: Lightbulb, title: 'Innovation', desc: 'Applying structured analytical solutions to real-world infrastructure problems.' }
-  ];
+  const [ref, isVisible] = useReveal();
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-        
-        {/* Left Column - Text Bio */}
-        <div className="space-y-8 animate-fade-in">
-          <div>
-            <span className="text-sm text-primary tracking-wider uppercase font-medium">About Me</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-2">
-              Building the Future <span className="font-serif italic text-muted-foreground block md:inline">One System at a Time</span>
-            </h2>
-          </div>
-          
-          <div className="space-y-4 text-muted-foreground text-base">
+    <section id="about" className="py-28">
+      <div ref={ref} className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+        {/* Left: bio */}
+        <div className={`space-y-7 ${isVisible ? 'reveal' : 'opacity-0'}`}>
+          <SectionTag>about</SectionTag>
+          <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight">
+            Building the backend,
+            <br />
+            <span className="italic text-muted">one system at a time.</span>
+          </h2>
+
+          <div className="space-y-4 text-muted leading-relaxed">
             <p>
-              I am a Computer Science and Engineering student specializing in AI and Data Science. My primary engineering focus revolves around crafting optimized backend components and reliable API infrastructures.
+              I'm a Computer Science and Engineering student specializing in AI and Data
+              Science at KTU. My focus sits on backend components and API infrastructure —
+              the layer most people never see, but always notice when it's slow.
             </p>
             <p>
-              I bridge theoretical compute logic with scalable real-world architectures—translating structured data frameworks into performant, clean-running services.
+              I bridge theoretical compute logic with real, scalable architecture:
+              turning structured data into services that hold up under traffic.
             </p>
           </div>
 
-          {/* Mission Card */}
-          <div className="glass p-6 rounded-3xl border border-primary/20 shadow-xl shadow-primary/5">
-            <p className="text-lg font-medium italic text-white font-serif">
-              "My mission is to engineer high-throughput data layers and maintain absolute code clarity under high traffic loads."
-            </p>
-          </div>
+          <blockquote className="border-l-2 border-accent pl-5 py-1 font-display italic text-lg text-ink">
+            "Engineer the data layer first. The interface is easier to fix later than
+            a database schema."
+          </blockquote>
         </div>
 
-        {/* Right Column - Highlight Grid */}
-        <div className="grid sm:grid-cols-2 gap-6">
+        {/* Right: highlight grid */}
+        <div
+          className={`grid sm:grid-cols-2 gap-5 ${isVisible ? 'reveal' : 'opacity-0'}`}
+          style={{ animationDelay: '120ms' }}
+        >
           {highlights.map((item, idx) => {
-            const IconComponent = item.icon;
+            const Icon = item.icon;
             return (
-              <div 
-                key={idx} 
-                className="glass p-6 rounded-2xl border border-white/5 group hover:border-primary/30 transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${(idx + 1) * 100}ms` }}
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-all duration-300">
-                  <IconComponent className="w-6 h-6 text-primary" />
+              <div key={idx} className="card card-hover p-6">
+                <div className="w-11 h-11 rounded-xl bg-accent-soft flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <h3 className="font-medium text-ink mb-1.5">{item.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
