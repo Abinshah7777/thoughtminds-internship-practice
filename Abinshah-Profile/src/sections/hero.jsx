@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Download } from 'lucide-react';
 import Button from '@/components/Button';
+import abinshahImg from '@/assets/abinshah.jpg';
+import resumeCV from '@/assets/Abinshah_CV.pdf';
 
 const LOG_LINES = [
   '$ whoami',
@@ -15,14 +17,17 @@ export default function Hero() {
   const [visibleLines, setVisibleLines] = useState(0);
 
   useEffect(() => {
-    if (visibleLines >= LOG_LINES.length) return;
+    if (visibleLines >= LOG_LINES.length) {
+      const resetTimer = setTimeout(() => setVisibleLines(0), 2000);
+      return () => clearTimeout(resetTimer);
+    }
     const timer = setTimeout(() => setVisibleLines((v) => v + 1), 450);
     return () => clearTimeout(timer);
   }, [visibleLines]);
 
   return (
     <section className="relative pt-36 pb-24 overflow-hidden">
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
+      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-2 items-center">
         {/* Left: statement */}
         <div className="space-y-7">
           <span className="tag-label inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5">
@@ -49,7 +54,7 @@ export default function Hero() {
               </Button>
             </a>
             {/* Drop your resume PDF in /public and point this at it, e.g. "/resume.pdf" */}
-            <a href="/resume.pdf" download>
+            <a href={resumeCV} download="Abinshah_CV.pdf">
               <Button size="lg" variant="secondary">
                 Resume <Download size={16} />
               </Button>
@@ -57,26 +62,41 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: terminal signature element */}
-        <div className="card p-6 sm:p-8 shadow-[0_40px_80px_-40px_rgba(21,23,28,0.18)]">
-          <div className="flex items-center gap-2 pb-4 border-b border-border mb-5">
-            <span className="h-3 w-3 rounded-full bg-[#ECC] border border-border" style={{ backgroundColor: '#f5b8a8' }} />
-            <span className="h-3 w-3 rounded-full" style={{ backgroundColor: '#f5dca8' }} />
-            <span className="h-3 w-3 rounded-full" style={{ backgroundColor: '#b8e0c4' }} />
-            <span className="font-mono text-xs text-muted ml-2">status.sh</span>
+        {/* Right: profile photo + terminal */}
+        <div className="flex justify-center items-center gap-4 -ml-[200px]">
+          {/* Photo */}
+          <div className="relative w-72 h-80">
+            {/* Gradient border background */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent via-accent/20 to-background opacity-40 blur-2xl" />
+            {/* Photo container */}
+            <img
+              src={abinshahImg}
+              alt="Abinshah"
+              className="relative w-full h-full rounded-2xl object-cover border-2 border-accent/30 shadow-[0_40px_80px_-40px_rgba(21,23,28,0.18)]"
+            />
           </div>
-          <div className="font-mono text-sm space-y-2.5 min-h-[210px]">
-            {LOG_LINES.slice(0, visibleLines).map((line, idx) => (
-              <p
-                key={idx}
-                className={line.startsWith('$') ? 'text-ink' : 'text-muted pl-3'}
-              >
-                {line}
-              </p>
-            ))}
-            {visibleLines < LOG_LINES.length && (
-              <span className="caret inline-block w-2 h-4 bg-ink align-middle" />
-            )}
+
+          {/* Terminal snippet */}
+          <div className="card p-5 shadow-[0_40px_80px_-40px_rgba(21,23,28,0.18)] w-64">
+            <div className="flex items-center gap-2 pb-3 border-b border-border mb-4">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ECC] border border-border" style={{ backgroundColor: '#f5b8a8' }} />
+              <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#f5dca8' }} />
+              <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: '#b8e0c4' }} />
+              <span className="font-mono text-xs text-muted ml-2">status.sh</span>
+            </div>
+            <div className="font-mono text-xs space-y-2 min-h-[150px]">
+              {LOG_LINES.slice(0, visibleLines).map((line, idx) => (
+                <p
+                  key={idx}
+                  className={line.startsWith('$') ? 'text-ink' : 'text-muted pl-2'}
+                >
+                  {line}
+                </p>
+              ))}
+              {visibleLines < LOG_LINES.length && (
+                <span className="caret inline-block w-1.5 h-3 bg-ink align-middle" />
+              )}
+            </div>
           </div>
         </div>
       </div>

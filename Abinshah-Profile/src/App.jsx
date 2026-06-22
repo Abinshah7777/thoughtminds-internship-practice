@@ -4,8 +4,10 @@ import Footer from '@/layout/Footer';
 import Hero from '@/sections/Hero';
 import About from '@/sections/About';
 import Projects from '@/sections/Projects';
+import Skills from '@/sections/Skills';
 import Experience from '@/sections/Experience';
-import Testimonials from '@/sections/Testimonials';
+import Education from '@/sections/Education';
+import Certifications from '@/sections/Certifications';
 import Contact from '@/sections/Contact';
 
 export default function App() {
@@ -15,9 +17,11 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Skills />
         <Projects />
         <Experience />
-        <Testimonials />
+        <Education />
+        <Certifications />
         <Contact />
       </main>
       <Footer />

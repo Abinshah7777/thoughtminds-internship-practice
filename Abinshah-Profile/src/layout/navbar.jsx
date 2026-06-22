@@ -4,9 +4,11 @@ import Button from '@/components/Button';
 
 const links = [
   { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
-  { href: '#testimonials', label: 'Testimonials' },
+  { href: '#education', label: 'Education' },
+  { href: '#certifications', label: 'Certifications' },
   { href: '#contact', label: 'Contact' },
 ];
 

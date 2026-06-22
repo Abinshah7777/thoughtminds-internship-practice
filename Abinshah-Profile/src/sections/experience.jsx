@@ -1,6 +1,8 @@
 import React from 'react';
+import { Download } from 'lucide-react';
 import SectionTag from '@/components/SectionTag';
 import useReveal from '@/hooks/useReveal';
+import internCertificate from '@/assets/Intern Certificate of Abinshah PM .pdf';
 
 const experiences = [
   {
@@ -42,7 +44,20 @@ export default function Experience() {
             >
               <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full bg-accent ring-4 ring-accent-soft" />
               <p className="font-mono text-xs text-accent mb-2">{exp.period}</p>
-              <h3 className="font-display text-2xl text-ink">{exp.role}</h3>
+              <div className="flex items-center gap-3 mb-2">
+                <h3 className="font-display text-2xl text-ink">{exp.role}</h3>
+                {exp.role === 'Software Engineering Intern' && (
+                  <a
+                    href={internCertificate}
+                    download="Internship_Certificate_Abinshah.pdf"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-accent-soft text-accent rounded-lg hover:bg-accent hover:text-white transition-all"
+                    title="Download internship certificate"
+                  >
+                    <Download size={14} />
+                    Certificate
+                  </a>
+                )}
+              </div>
               <p className="text-muted text-sm font-medium mt-1">{exp.company}</p>
               <p className="text-muted text-sm mt-3 max-w-xl leading-relaxed">{exp.desc}</p>
               <div className="flex flex-wrap gap-2 mt-4">

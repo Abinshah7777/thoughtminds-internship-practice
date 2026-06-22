@@ -8,30 +8,34 @@ const projects = [
   {
     title: 'LearnHub — Course Management Portal',
     label: 'LMS',
+    type: 'lms',
     desc: 'A full LMS with JWT auth, role-based access control, Multer file uploads, and PDFKit-generated certificates on completion.',
     tags: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'PDFKit'],
-    link: '#',
+    link: 'https://github.com/Abinshah7777/LearnHub',
   },
   {
     title: 'Catalogue Management System',
     label: 'API',
+    type: 'api',
     desc: 'A full-stack inventory system built with Flask and a RESTful API layer to handle stock workflows end to end.',
     tags: ['Flask', 'Python', 'REST API', 'SQLite'],
-    link: '#',
+    link: 'https://github.com/Abinshah7777/E-Commerce-Catalogue-Manager',
   },
   {
     title: 'Forever — E-commerce Frontend',
     label: 'UI',
+    type: 'ecommerce',
     desc: 'A React + Vite storefront with Tailwind CSS, built from a guided tutorial and extended with independent component work.',
     tags: ['React', 'Vite', 'Tailwind CSS'],
-    link: '#',
+    link: 'https://github.com/Abinshah7777/E-Commerce-REACT.JS-'
   },
   {
-    title: 'Real-Time Telemetry Tracker',
-    label: 'DASH',
-    desc: 'A live dashboard that ingests multi-threaded client operations and streams status updates to the UI in real time.',
-    tags: ['React', 'Tailwind CSS', 'JavaScript'],
-    link: '#',
+    title: 'React Weather App',
+    label: 'WEATHER',
+    type: 'weather',
+    desc: 'A real-time weather application built with React that displays current weather, forecasts, and location-based data with a responsive design.',
+    tags: ['React', 'Tailwind CSS', 'JavaScript', 'Weather API'],
+    link: 'https://github.com/Abinshah7777/Weather-app',
   },
 ];
 
@@ -56,12 +60,14 @@ export default function Projects() {
           {projects.map((proj, idx) => (
             <a
               href={proj.link}
+              target="_blank"
+              rel="noopener noreferrer"
               key={proj.title}
               className={`group card card-hover overflow-hidden flex flex-col ${isVisible ? 'reveal' : 'opacity-0'}`}
               style={{ animationDelay: `${idx * 90}ms` }}
             >
               <div className="aspect-[16/9] overflow-hidden border-b border-border">
-                <ProjectCover label={proj.label} />
+                <ProjectCover label={proj.label} type={proj.type} />
               </div>
               <div className="p-6 flex flex-col gap-3 flex-1">
                 <div className="flex justify-between items-start gap-3">
@@ -85,6 +91,19 @@ export default function Projects() {
               </div>
             </a>
           ))}
+        </div>
+
+        {/* See all projects link */}
+        <div className="mt-12 flex justify-center">
+          <a
+            href="https://github.com/Abinshah7777"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-accent bg-accent/5 text-accent hover:bg-accent/10 transition-colors font-medium"
+          >
+            See all projects on GitHub
+            <ArrowUpRight size={16} />
+          </a>
         </div>
       </div>
     </section>
